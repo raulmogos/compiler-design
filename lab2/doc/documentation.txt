@@ -1,0 +1,58 @@
+
+HashMap:
+    members:
+        list: List<LinkedList<String>>
+        size: int
+
+    methods:
+
+        public HashMap(int size)
+            PRECONDITIONS: int > 0
+            POSTCONDITIONS: none
+            DESCRIPTION: creates an instance of HaspMap with the give size
+
+        private int hash(String s)
+            PRECONDITIONS: s of type string
+            POSTCONDITIONS: none
+            RETURN: int
+            DESCRIPTION: calculates the the hash as: (c1 + c2 + ... + cn) % size
+                add all the chars ascii values and then mod size
+
+        public void add(String s)
+            PRECONDITIONS: s of type string
+            POSTCONDITIONS: none
+            RETURN: void
+            DESCRIPTION: adds the string in the hashmap
+
+        public int getIndex(String s)
+            PRECONDITIONS: s of type string
+            POSTCONDITIONS: none
+            RETURN: int
+            DESCRIPTION: gets the index of the given string s if it is in the hashmap, else -1
+
+
+SymbolTable
+
+    members:
+        SIZE: int;
+        hashMap: HashMap;
+
+    methods:
+
+        public SymbolTable(int size)
+            PRECONDITIONS: int > 0
+            POSTCONDITIONS: none
+            DESCRIPTION: creates an instance of SymbolTable with the give size
+
+        public SymbolTable()
+            DESCRIPTION: creates an instance of SymbolTable with the default size
+
+        public void insert(String s)
+            PRECONDITIONS: s of type String
+            POSTCONDITIONS: none
+            DESCRIPTION: adds a string in the symbolTable
+
+        public int getIndex(String s)
+            PRECONDITIONS: s of type String
+            POSTCONDITIONS: none
+            DESCRIPTION: get the index of that string s, else -1

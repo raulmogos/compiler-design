@@ -4,6 +4,15 @@ public class Main {
 
         SymbolTable symbolTable = new SymbolTable(100);
 
+        /**
+         * !!!!!
+         *
+         *  DOCUMENTATION AND UML DIAGRAM ARE IN doc folder
+         *
+         * !!!!
+         */
+
+
         symbolTable.insert("hello");
         symbolTable.insert("lab");
         symbolTable.insert("2");
