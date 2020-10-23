@@ -22,7 +22,7 @@ HashMap:
             PRECONDITIONS: s of type string
             POSTCONDITIONS: none
             RETURN: void
-            DESCRIPTION: adds the string in the hashmap
+            DESCRIPTION: adds the string in the hashmap if it does not exist, else it won't be added
 
         public int getIndex(String s)
             PRECONDITIONS: s of type string

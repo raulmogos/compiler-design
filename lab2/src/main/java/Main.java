@@ -14,12 +14,14 @@ public class Main {
 
 
         symbolTable.insert("hello");
+        symbolTable.insert("heoll");
         symbolTable.insert("lab");
         symbolTable.insert("2");
         symbolTable.insert("!");
 
         // should print their indexes
         System.out.println(symbolTable.getIndex("hello"));
+        System.out.println(symbolTable.getIndex("heoll"));
         System.out.println(symbolTable.getIndex("lab"));
         System.out.println(symbolTable.getIndex("2"));
         System.out.println(symbolTable.getIndex("!"));
