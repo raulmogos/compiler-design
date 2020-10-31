@@ -1,12 +1,17 @@
 
-HashMap:
+RAUL MOGOS - lab2 -flcd
+
+
+https://github.com/raulmogos/compiler-design/tree/main/lab2
+
+MyHashMap:
     members:
         list: List<LinkedList<String>>
         size: int
 
     methods:
 
-        public HashMap(int size)
+        public MyHashMap(int size)
             PRECONDITIONS: int > 0
             POSTCONDITIONS: none
             DESCRIPTION: creates an instance of HaspMap with the give size
@@ -35,7 +40,7 @@ SymbolTable
 
     members:
         SIZE: int;
-        hashMap: HashMap;
+        hashMap: MyHashMap;
 
     methods:
 

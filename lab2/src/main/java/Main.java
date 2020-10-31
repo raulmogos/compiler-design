@@ -1,34 +1,17 @@
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("hello lab2");
+    public static void main(String[] args) throws IOException {
 
-        SymbolTable symbolTable = new SymbolTable(100);
-
-        /**
-         * !!!!!
-         *
-         *  DOCUMENTATION AND UML DIAGRAM ARE IN doc folder
-         *
-         * !!!!
-         */
+        System.out.println(Lexic.operators);
+        System.out.println(Lexic.separators);
+        System.out.println(Lexic.reservedWords);
+        System.out.println("\n\n");
 
 
-        symbolTable.insert("hello");
-        symbolTable.insert("heoll");
-        symbolTable.insert("lab");
-        symbolTable.insert("2");
-        symbolTable.insert("!");
+        new Scanner().scan("src/main/java/io/p1.txt");
+        new Scanner().scan("src/main/java/io/p2.txt");
+        new Scanner().scan("src/main/java/io/p3.txt");
 
-        // should print their indexes
-        System.out.println(symbolTable.getIndex("hello"));
-        System.out.println(symbolTable.getIndex("heoll"));
-        System.out.println(symbolTable.getIndex("lab"));
-        System.out.println(symbolTable.getIndex("2"));
-        System.out.println(symbolTable.getIndex("!"));
-
-        // should print -1 every time
-        System.out.println(symbolTable.getIndex("this"));
-        System.out.println(symbolTable.getIndex("is"));
-        System.out.println(symbolTable.getIndex("working"));
     }
 }

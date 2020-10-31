@@ -1,0 +1,15 @@
+int a = input()
+int b = input()
+int c =    input()
+
+if (a >= b and a >= c) {
+	print("max is ")
+	print(c)
+} elif (b >= a and b >= c) {
+	print("max is")
+	print(b)
+} else {
+	print("max is", "hello me")
+	print(c)
+}
+print('e')

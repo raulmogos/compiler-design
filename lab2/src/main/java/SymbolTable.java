@@ -1,22 +1,27 @@
+
 public class SymbolTable {
 
     private static final int SIZE = 100;
-    private final HashMap hashMap;
+    private final MyHashMap myHashMap;
 
     public SymbolTable(int size) {
-        this.hashMap = new HashMap(size);
+        this.myHashMap = new MyHashMap(size);
     }
 
     public SymbolTable() {
-        this.hashMap = new HashMap(SIZE);
+        this.myHashMap = new MyHashMap(SIZE);
     }
 
-    public void insert(String s) {
-        hashMap.add(s);
+    public int add(String s) {
+        return myHashMap.add(s);
     }
 
     public int getIndex(String s) {
-        return hashMap.getIndex(s);
+        return myHashMap.getIndex(s);
     }
 
+    @Override
+    public String toString() {
+        return myHashMap.toString();
+    }
 }

@@ -63,7 +63,7 @@
 											"top": 175,
 											"width": 173.798828125,
 											"height": 13,
-											"text": "HashMap"
+											"text": "MyHashMap"
 										},
 										{
 											"_type": "LabelView",
@@ -237,7 +237,7 @@
 											"top": 281,
 											"width": 173.798828125,
 											"height": 13,
-											"text": "+HashMap(size: int)",
+											"text": "+MyHashMap(size: int)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -417,7 +417,7 @@
 											"top": 150,
 											"width": 175,
 											"height": 13,
-											"text": "-hashMap: HashMap",
+											"text": "-hashMap: MyHashMap",
 											"horizontalAlignment": 0
 										},
 										{
@@ -862,7 +862,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "HashMap",
+					"name": "MyHashMap",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -977,7 +977,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF1MKQ7BgHvX0g="
 							},
-							"name": "HashMap",
+							"name": "MyHashMap",
 							"parameters": [
 								{
 									"_type": "UMLParameter",

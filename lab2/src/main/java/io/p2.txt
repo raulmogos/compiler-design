@@ -1,0 +1,12 @@
+// maxi from a list of numbers
+
+int[] lst = [1,  2, 3, 4, 5]
+int n = 5
+int maxi = lst[1]
+
+for int i in 1:n {
+	maxi = maxi < lst[i]  ? lst[i] : maxi // or change in if
+}
+
+print("max is ")
+print(maxi)

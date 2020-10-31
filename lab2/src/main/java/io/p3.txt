@@ -1,0 +1,12 @@
+// concat list of strings
+
+string[] lst = ["hello", "world", '!']
+int n = 3
+string rez
+
+for int i in 0:n {
+	rez += lst[i]
+	rez += ' '
+}
+
+print(rez)
