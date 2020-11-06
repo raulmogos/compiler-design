@@ -1,8 +1,6 @@
-// concat list of strings with lexical errors
-
-string[] lst = ["hello", "world", '!] // error
+string[] lst = ["hello", "world", '!]
 int n = 3
-string 222rez  // error
+string 222rez
 
 for int i in 0:n {
 	rez += lst[i]

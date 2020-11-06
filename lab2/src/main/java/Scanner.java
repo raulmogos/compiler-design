@@ -14,7 +14,7 @@ public class Scanner {
     private final SymbolTable symbolTable;
 
     public Scanner() {
-        this.pif = new ArrayList<Token>();
+        this.pif = new ArrayList<>();
         this.symbolTable = new SymbolTable();
     }
 
@@ -36,7 +36,7 @@ public class Scanner {
                     result.add(line.substring(start, i));
                     start = -1;
                 }
-                if ( i + 1 < line.length() && isOperator(line.substring(i ,i + 1))) {
+                if ( i + 1 < line.length() && isOperator(line.substring(i ,i + 2))) {
                     result.add(line.substring(i, i + 2));
                     i += 1;
                 } else {
@@ -66,6 +66,7 @@ public class Scanner {
         }
 
         // everything between ""
+        // todo: same thing for ''
         List<String> strings = new ArrayList<>();
         List<Integer> indexes = new ArrayList<>();
         start = -1;
@@ -117,6 +118,7 @@ public class Scanner {
     boolean isSeparator(char c) {
         return Lexic.separators.containsKey(String.valueOf(c));
     }
+
     boolean isSeparator(String string) {
         return Lexic.separators.containsKey(string);
     }
@@ -125,10 +127,14 @@ public class Scanner {
         return Lexic.reservedWords.containsKey(token);
     }
 
+    private boolean isIdentifier(String token){
+        return token.matches("[a-zA-Z]+[0-9]*");
+    }
+
     boolean isConstant(String token) {
         boolean isChar = token.matches("'[a-zA-Z0-9]{1}'");
         boolean isString = token.matches("\"[ a-zA-Z0-9!?-@,.;:+]+\"");
-        boolean isNumber = token.matches("^[1-9][0-9]{0,10}");
+        boolean isNumber = token.matches("^[1-9][0-9]{0,10}") || token.matches("[0-9]{1}");
         return  isChar || isString || isNumber;
     }
 
@@ -138,36 +144,44 @@ public class Scanner {
         int i = 0;
         StringBuilder codeStringBuilder = new StringBuilder();
         while ((line = bufferedReader.readLine()) != null) {
-            codeStringBuilder.append(line).append("\\n");
+            codeStringBuilder.append(line).append(" ");
         }
 
         List<String> tokens =  split(codeStringBuilder.toString());
 
         System.out.println(tokens);
+        boolean isValid = true;
+        String errorToken = "";
 
-        tokens.forEach(token -> {
-            if (!token.equals(" ")) {
-                token = token.strip();
+        for(var token: tokens) {
+            token = token.strip();
+            if (!token.equals("") && !token.equals("\\n")) {
+                if (isOperator(token)) {
+                    pif.add(new Token(token, NO_POZ));
+                } else if (isSeparator(token)) {
+                    pif.add(new Token(token, NO_POZ));
+                } else if (isReservedWord(token)) {
+                    pif.add(new Token(token, NO_POZ));
+                } else if (isConstant(token)) {
+                    int index = symbolTable.add(token);
+                    pif.add(new Token(CONST, index));
+                } else if (isIdentifier(token)) {
+                    // it if identifier
+                    int index = symbolTable.add(token);
+                    pif.add(new Token(ID, index));
+                } else {
+                    isValid = false;
+                    errorToken = "Cannot classify token: " + token;
+                }
             }
-            if (isOperator(token)) {
-                pif.add(new Token(token, NO_POZ));
-            } else if (isSeparator(token)) {
-                pif.add(new Token(token, NO_POZ));
-            } else if (isReservedWord(token)) {
-                pif.add(new Token(token, NO_POZ));
-            } else if (isConstant(token)) {
-                int index = symbolTable.add(token);
-                pif.add(new Token(CONST, index));
-            } else {
-                // it if identifier
-                int index = symbolTable.add(token);
-                pif.add(new Token(ID, index));
-            }
-        });
+        }
 
         System.out.println("PIF");
-        pif.forEach(token -> {
-            System.out.println(token.getToken() + "   --   " + token.getPosition());
+        if (!isValid) {
+            System.out.println(errorToken);
+        }
+        pif.forEach(tkn -> {
+            System.out.println(tkn.getToken() + "   --   " + tkn.getPosition());
         });
         System.out.println("\n\nsymbolTable");
         System.out.println(symbolTable);

@@ -1,10 +1,8 @@
-// concat list of strings
-
-string[] lst = ["hello", "world", '!']
+string[] lst = ["hello", "world", "a!"]
 int n = 3
 string rez
 
-for int i in 0:n {
+for int i in (0:n) {
 	rez += lst[i]
 	rez += ' '
 }

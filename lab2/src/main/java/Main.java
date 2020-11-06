@@ -8,10 +8,10 @@ public class Main {
         System.out.println(Lexic.reservedWords);
         System.out.println("\n\n");
 
-
         new Scanner().scan("src/main/java/io/p1.txt");
         new Scanner().scan("src/main/java/io/p2.txt");
         new Scanner().scan("src/main/java/io/p3.txt");
+        new Scanner().scan("src/main/java/io/pe.txt");
 
     }
 }
