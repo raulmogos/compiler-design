@@ -1,0 +1,9 @@
+p,q,r
+a,b
+p
+r
+
+p,q,a
+p,r,a
+q,q,a
+q,r,b

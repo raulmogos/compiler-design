@@ -1,0 +1,31 @@
+https://github.com/raulmogos/compiler-design
+
+RAUL MOGOS NICU
+
+DOCUMENTATION FOR LAB 4
+
+
+
+Classes:
+
+    State - represents a state and takes a name/content
+    Transition - represents a transition and take two states and a transition string
+    FiniteAutomata - represents a finite automata which reads from file in the given form
+        FILE INPUT:
+            1st line : set of all states separated by comma, ex: p,q,r
+            2nd line : set of all transitions separated by comma, ex: a,b
+            3rd line : initial state, ex: p
+            4th line : set of all final states separated by comma, ex: r
+            5th line : empty
+            6th line : the transition function in this format st1,st2,tr, ex: p,q,r
+
+        FILE INPUT EXAMPLE:
+        p,q,r
+        a,b
+        p
+        r
+
+        p,q,a
+        p,r,a
+        q,q,a
+        q,r,b
