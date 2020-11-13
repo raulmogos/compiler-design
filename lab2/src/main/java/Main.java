@@ -16,6 +16,7 @@ public class Main {
 //        new Scanner().scan("src/main/java/io/pe.txt");
 
         FiniteAutomata finiteAutomata = new FiniteAutomata("src/main/java/automata/in.txt");
-        finiteAutomata.runMenu();
+        finiteAutomata.isDeterministic();
+        System.out.println(finiteAutomata.check("aab"));
     }
 }

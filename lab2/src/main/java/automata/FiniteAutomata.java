@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FiniteAutomata {
 
@@ -136,5 +137,58 @@ public class FiniteAutomata {
         }
 
     }
+
+    public boolean isDeterministic() {
+        for (var st: states) {
+            List<Transition<String, String>> out = transitionsFunctions
+                    .stream().filter(fc -> fc.getState1().getContent().equals(st.getContent()))
+                    .collect(Collectors.toList());
+            for (int i = 0; i < out.size() - 1; i++) {
+                for (int j = i + 1; j < out.size(); j++) {
+                    if (out.get(i).getTransition().equals(out.get(j).getTransition())) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean check(String token) {
+        if (!isDeterministic()) {
+            System.out.println("Is not deterministic");
+            return false;
+        }
+
+        if (token.equals("")) {
+            return false;
+        }
+
+        int index = 0;
+        State<String> currentState = initialState;
+
+        while (index < token.length()) {
+// todo
+            String currentChar = token.substring(index, index + 1);
+            System.out.println(currentChar);
+            Transition<String, String> transition = null;
+            State<String> nextState = null;
+            for (var tr: transitionsFunctions) {
+                if (tr.getState1() == currentState && tr.getTransition().equals(currentChar)) {
+                    transition = tr;
+                    nextState = tr.getState2();
+                }
+            }
+            if (transition == null) {
+                return false;
+            }
+            currentState = nextState;
+            index += 1;
+        }
+
+        return true;
+    }
+
+
 
 }
