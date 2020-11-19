@@ -168,13 +168,14 @@ public class FiniteAutomata {
         State<String> currentState = initialState;
 
         while (index < token.length()) {
-// todo
+// // TODO: 11/19/2020
             String currentChar = token.substring(index, index + 1);
-            System.out.println(currentChar);
+//            System.out.println(currentChar);
+//            System.out.println(currentState);
             Transition<String, String> transition = null;
             State<String> nextState = null;
             for (var tr: transitionsFunctions) {
-                if (tr.getState1() == currentState && tr.getTransition().equals(currentChar)) {
+                if (tr.getState1().getContent().equals(currentState.getContent()) && tr.getTransition().equals(currentChar)) {
                     transition = tr;
                     nextState = tr.getState2();
                 }
@@ -186,7 +187,14 @@ public class FiniteAutomata {
             index += 1;
         }
 
-        return true;
+        // check state to be one of the final states
+        for (var state: finalStates) {
+            if (currentState.getContent().equals(state.getContent())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 

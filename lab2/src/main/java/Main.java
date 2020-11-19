@@ -17,6 +17,6 @@ public class Main {
 
         FiniteAutomata finiteAutomata = new FiniteAutomata("src/main/java/automata/in.txt");
         finiteAutomata.isDeterministic();
-        System.out.println(finiteAutomata.check("aab"));
+        System.out.println(finiteAutomata.check("akkkkkkkb"));
     }
 }
