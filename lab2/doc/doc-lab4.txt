@@ -1,0 +1,18 @@
+
+RAUL NICU MOGOS
+
+DOCUMENTATION FOR LAB
+
+
+Added checking if a token is integer constant or a identifier with finite automata.
+
+new methods in class FiniteAutomata:
+
+            isDeterministic()
+                description: check if the the automata is deterministic or not
+                return: true if it is deterministic, false if not
+
+
+            check(String token)
+                 description: check if the token is accepted if accepted
+                 return: true if the token is accepted, else false

@@ -1,3 +1,5 @@
+import automata.FiniteAutomata;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,10 +14,14 @@ public class Scanner {
 
     private final List<Token> pif;
     private final SymbolTable symbolTable;
+    private FiniteAutomata finiteAutomataNumber;
+    private FiniteAutomata finiteAutomataIdentifier;
 
     public Scanner() {
         this.pif = new ArrayList<>();
         this.symbolTable = new SymbolTable();
+        finiteAutomataNumber = new FiniteAutomata("src/main/java/automata/const_number.txt");
+        // finiteAutomataIdentifier = new FiniteAutomata("src/main/java/automata/identifier.txt");
     }
 
     public Scanner(List<Token> pif, SymbolTable symbolTable) {
@@ -128,13 +134,15 @@ public class Scanner {
     }
 
     private boolean isIdentifier(String token){
+//        return finiteAutomataIdentifier.check(token);
         return token.matches("[a-zA-Z]+[0-9]*");
     }
 
     boolean isConstant(String token) {
         boolean isChar = token.matches("'[a-zA-Z0-9]{1}'");
         boolean isString = token.matches("\"[ a-zA-Z0-9!?-@,.;:+]+\"");
-        boolean isNumber = token.matches("^[1-9][0-9]{0,10}") || token.matches("[0-9]{1}");
+        boolean isNumber = finiteAutomataNumber.check(token);
+        // boolean isNumber = token.matches("^[1-9][0-9]{0,10}") || token.matches("[0-9]{1}");
         return  isChar || isString || isNumber;
     }
 
